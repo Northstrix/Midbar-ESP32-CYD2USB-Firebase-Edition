@@ -1,5 +1,5 @@
 {
-    "name": "Midbar ESP32 CYD Firebase Edition",
+    "name": "Midbar ESP32 CYD2USB Firebase Edition",
     "new_install_prompt_erase": true,
     "builds": [
       {
