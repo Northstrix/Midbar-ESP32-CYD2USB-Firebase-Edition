@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Midbar ESP32 CYD2USB Firebase Edition WebFlash</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Exo:400,700');
+
+        html, body {
+            height: 100%;
+            margin: 0;
+            font-family: 'Exo', sans-serif;
+            color: #ffffff;
+        }
+
+        .bg {
+            animation: slide 3s ease-in-out infinite alternate;
+            background-image: linear-gradient(-60deg, #000000 50%, #1e3a8a 50%);
+            bottom: 0;
+            left: -50%;
+            opacity: .5;
+            position: fixed;
+            right: -50%;
+            top: 0;
+            z-index: -1;
+        }
+
+        .bg2 {
+            animation-direction: alternate-reverse;
+            animation-duration: 4s;
+            background-image: linear-gradient(-60deg, #1e3a8a 50%, #3b82f6 50%);
+        }
+
+        .bg3 {
+            animation-duration: 5s;
+            background-image: linear-gradient(-60deg, #3b82f6 50%, #ffffff 50%);
+        }
+
+        .context {
+            background-color: rgba(0, 0, 0, 0.5);
+            box-sizing: border-box;
+            left: 50%;
+            padding: 10vmin;
+            position: fixed;
+            text-align: center;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            max-width: 600px;
+        }
+
+        h1 {
+            color: #ffffff;
+        }
+
+        .footer {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            padding: 10px 0;
+            text-align: center;
+            background-color: transparent;
+        }
+
+        .footer p {
+            margin: 5px 0;
+            font-size: 14px;
+            color: #eeeeee;
+        }
+
+        .footer a {
+            color: #eeeeee;
+            text-decoration: none;
+            text-decoration: underline;
+        }
+
+        @keyframes slide {
+            0% {
+                transform: translateX(-25%);
+            }
+            100% {
+                transform: translateX(25%);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg"></div>
+    <div class="bg bg2"></div>
+    <div class="bg bg3"></div>
+
+    <div class="context">
+        <h1>Midbar ESP32 CYD2USB Firebase Edition WebFlash</h1>
+        <div id="main" style="display: none;">
+            <br>
+            <script type="module" src="https://unpkg.com/esp-web-tools@7.3.1/dist/web/install-button.js?module"></script>
+            <esp-web-install-button id="installButton" manifest="webflash/manifest.json"></esp-web-install-button>
+            </br></br>
+            <span>NOTE: Make sure to close anything using your devices com port (e.g. Serial monitor)</span>
+        </div>
+        <div id="notSupported" style="display: none;">
+            Your browser does not support the Web Serial API. Try Chrome
+        </div>
+    </div>
+
+    <div class="footer">
+        <p><span class="custom-links"><a href="https://codepen.io/chris22smith/pen/RZogMa">Sliding Diagonals Background Effect</a> by <a href="https://codepen.io/chris22smith">Chris Smith</a></span></p>
+    </div>
+
+    <script>
+        if (navigator.serial) {
+            document.getElementById("notSupported").style.display = 'none';
+            document.getElementById("main").style.display = 'block';
+        } else {
+            document.getElementById("notSupported").style.display = 'block';
+            document.getElementById("main").style.display = 'none';
+        }
+    </script>
+</body>
+</html>
